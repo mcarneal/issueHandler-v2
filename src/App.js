@@ -1,26 +1,48 @@
-import React from 'react';
+import React ,{ Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux'
+import { login } from './actions'
+import { Route, Switch, withRouter } from "react-router-dom"
+import Login from './Containers/login'
+import Home from './Containers/home'
+import { autoLogin } from './actions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+
+
+
+    componentDidMount(){
+        let token = localStorage.getItem("token")
+        if (token){
+            this.props.autoLogin(this.props)
+            if(this.props.user){
+                this.props.history.push('/home')
+            }
+        } else {
+            this.props.history.push('/')
+        }
+    }
+
+
+    render(){
+        return( 
+            <div className= "App">
+                <Switch>
+                    <Route exact path="/home" render={()=> <Home employee={this.props.user}/>}/>
+                    <Route exact path="/" render={()=> <Login />} />
+                </Switch>
+            </div>
+
+
+        )
+    }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+    return state
+}
+export default withRouter(connect(mapStateToProps, { login , autoLogin })(App));
