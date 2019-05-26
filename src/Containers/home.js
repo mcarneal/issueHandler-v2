@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import IssuesContainer from './issuesContainer' 
+import MyAssignments from './myAssignments'
 class Home extends React.Component {
 
 
@@ -12,7 +13,11 @@ class Home extends React.Component {
     renderContent = () => {
         if (this.props.user.username){
             if (this.state.showAll){
-                return <IssuesContainer />              
+                return (
+                    <div className ='home'>
+                    <MyAssignments />
+                    <IssuesContainer />
+                    </div>)             
             } else if (!this.state.showAll){
                 return <h1>One page</h1>
             }

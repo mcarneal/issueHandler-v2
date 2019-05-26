@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.home{
+    display: flex;
+    clear: both;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.My.Assignments.Container{
+    margin-top: 6%;
+    float: left;
+    width: 25%;
+    overflow: scroll;
+}
+
+.IssuesContainer {
+    margin-top : 6%;
+    float: left;
+    width : 75%;
+    overflow: scroll;
+}

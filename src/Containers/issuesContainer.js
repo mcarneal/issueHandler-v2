@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { allIssues } from '../actions' 
+import { Table } from 'semantic-ui-react'
+import IssueCard from '../Components/issueCard'
 
 class IssuesContainer extends Component{
 
@@ -17,16 +19,23 @@ class IssuesContainer extends Component{
         if(this.props.issues.length > 0){
             let issues = this.props.issues
             console.log(issues)
-            return issues.map(issue => <p>{issue.description}</p>)        
+           return issues.map(issue => <IssueCard key={issue.id} {...issue} />)    
         }
     }
 
     render(){
-        console.log('inside ic render', this.props)
         return(
-            <div>
-                <h1>Issues container</h1>
-                {this.renderIssues()}
+            <div className='IssuesContainer'>
+                 <Table celled inverted selectable>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell>Title</Table.HeaderCell>
+                            <Table.HeaderCell>Description</Table.HeaderCell>
+                            <Table.HeaderCell>Status</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                   {this.renderIssues()}
+                </Table>
             </div>
         )
     }
