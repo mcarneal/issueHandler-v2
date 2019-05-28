@@ -15,7 +15,7 @@ class IssueCard extends Component{
         return (
            
             <Table.Body>
-                <Table.Row>
+                <Table.Row onClick={ ()=>this.props.clickHandler(this.props)}>
                     <Table.Cell>{this.props.title}</Table.Cell>
                     <Table.Cell>{this.props.description}</Table.Cell>
                     <Table.Cell textAlign='right'>{status} %</Table.Cell>

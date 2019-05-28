@@ -19,7 +19,7 @@ class IssuesContainer extends Component{
         if(this.props.issues.length > 0){
             let issues = this.props.issues
             console.log(issues)
-           return issues.map(issue => <IssueCard key={issue.id} {...issue} />)    
+           return issues.map(issue => <IssueCard key={issue.id} {...issue} clickHandler={this.props.clickHandler} />)    
         }
     }
 

@@ -3,8 +3,13 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import IssuesContainer from './issuesContainer' 
 import MyAssignments from './myAssignments'
-class Home extends React.Component {
+import { selectedIssue } from '../actions'
+import SingleIssue from './singleIssue'
+import NavBar from '../Components/navbar'
 
+
+
+class Home extends React.Component {
 
     state = {
         showAll : true
@@ -14,28 +19,48 @@ class Home extends React.Component {
         if (this.props.user.username){
             if (this.state.showAll){
                 return (
-                    <div className ='home'>
-                    <MyAssignments />
-                    <IssuesContainer />
-                    </div>)             
+                    <div>
+                        <NavBar />
+                        <div className ='home'>
+                            <MyAssignments />
+                            <IssuesContainer clickHandler={this.clickHandler} />
+                        </div>
+                    </div>
+                )             
             } else if (!this.state.showAll){
-                return <h1>One page</h1>
+                return(
+                    <div>
+                        <NavBar />
+                            <div className ='home'>
+                                <MyAssignments />
+                                <SingleIssue backButtonHandler={this.backButtonHandler} />
+                            </div>
+                        </div>
+                )             
+               
             }
         } else {
             return <h1>Loading</h1>
         }
     }
 
-    clickHandler = (e) =>{
-        e.preventDefault()
+
+    clickHandler = (props) => {
+        this.props.selectedIssue(props)
         this.setState({showAll : !this.state.showAll})
     }
+
+    backButtonHandler = () =>{
+        this.setState({showAll : !this.state.showAll})
+    }
+
+
+
+    
     render(){
-        console.log(this.state.showAll)
         return(
             <div>
                 {this.renderContent()}
-                <button onClick={this.clickHandler}>click me</button>
             </div>
         )
     }
@@ -43,4 +68,4 @@ class Home extends React.Component {
 const mapStateToProps = (state) => {
     return state
 }
-export default withRouter(connect(mapStateToProps)(Home))
+export default withRouter(connect(mapStateToProps, { selectedIssue })(Home))

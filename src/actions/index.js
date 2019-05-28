@@ -12,6 +12,13 @@ export const allIssues = (issues) => {
     }
 }
 
+export const selectedIssue = (issue) => {
+    return{
+        type: 'SELECTEDISSUE',
+        payload: issue 
+    }
+}
+
 export const autoLogin = (props) => {
     return dispatch => {
         fetch('http://localhost:3000/api/v1/get_employee',{

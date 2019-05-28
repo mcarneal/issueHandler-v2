@@ -21,14 +21,12 @@ code {
 }
 
 .My.Assignments.Container{
-    margin-top: 6%;
     float: left;
     width: 25%;
     overflow: scroll;
 }
 
 .IssuesContainer {
-    margin-top : 6%;
     float: left;
     width : 75%;
     overflow: scroll;
