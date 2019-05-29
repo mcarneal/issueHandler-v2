@@ -15,13 +15,12 @@ class MyAssignments extends Component {
     renderMyAssignment = () => {
         if(this.state.myAssignments){
             console.log('inside condtional', this.state.myAssignments)
-            return this.state.myAssignments.map(assignment => <AssignmentCard key={assignment.id} {...assignment} />)
+            return this.state.myAssignments.map(assignment => <AssignmentCard key={assignment.id} {...assignment} clickHandler={this.props.clickHandler}/>)
         }
     }
 
     componentWillReceiveProps(nextProps){
         let myAssignments = []
-        console.log('cwrp', nextProps)
         nextProps.issues.forEach((issue) =>{
             issue.assignments.forEach((assignment) =>{
                 return assignment.employee_id === this.props.user.id ? myAssignments.push(assignment) : null

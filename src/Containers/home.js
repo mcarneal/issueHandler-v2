@@ -15,6 +15,7 @@ class Home extends React.Component {
         showAll : true
     }
 
+
     renderContent = () => {
         if (this.props.user.username){
             if (this.state.showAll){
@@ -22,7 +23,7 @@ class Home extends React.Component {
                     <div>
                         <NavBar />
                         <div className ='home'>
-                            <MyAssignments />
+                            <MyAssignments clickHandler={this.clickHandler} />
                             <IssuesContainer clickHandler={this.clickHandler} />
                         </div>
                     </div>
@@ -32,8 +33,9 @@ class Home extends React.Component {
                     <div>
                         <NavBar />
                             <div className ='home'>
-                                <MyAssignments />
-                                <SingleIssue backButtonHandler={this.backButtonHandler} />
+                                <MyAssignments clickHandler={this.clickHandler} />
+                                <SingleIssue backButtonHandler={this.backButtonHandler}
+                                             changeStatusHandler={this.changeStatusHandler}/>
                             </div>
                         </div>
                 )             
@@ -47,11 +49,11 @@ class Home extends React.Component {
 
     clickHandler = (props) => {
         this.props.selectedIssue(props)
-        this.setState({showAll : !this.state.showAll})
+        this.setState({showAll : false})
     }
 
     backButtonHandler = () =>{
-        this.setState({showAll : !this.state.showAll})
+        this.setState({showAll : true})
     }
 
 

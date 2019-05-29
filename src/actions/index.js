@@ -5,6 +5,13 @@ export const login = (user) => {
     }
 }
 
+export const statusChanged = (change) => {
+    return{
+        type: 'CHANGED',
+        payload: change
+    }
+}
+
 export const allIssues = (issues) => {
     return{
         type: 'ISSUES',

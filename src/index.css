@@ -11,8 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-
+.ui.segment, .ui.primary.segment{
+    position : fixed !important;
+    z-index : 4;
+    width : 100%;
+    border-radius : 0px !important;
+    margin-bottom : 0px !important;
+}
 .home{
     display: flex;
     clear: both;
@@ -21,12 +26,14 @@ code {
 }
 
 .My.Assignments.Container{
+    margin-top : 11vh;
     float: left;
     width: 25%;
     overflow: scroll;
 }
 
 .IssuesContainer {
+    margin-top : 9vh;
     float: left;
     width : 75%;
     overflow: scroll;

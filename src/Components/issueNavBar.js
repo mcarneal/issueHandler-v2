@@ -16,10 +16,7 @@ const IssueBar = (props) => {
     <Link className="item">
       Contact
     </Link>
-    <Link className="item" onClick={props.changeStatusHandler}>
-      Change Status
-    </Link>
-    <Link className="item">
+    <Link className="item" onClick={props.addNewHandler}>
       Add Assignment
     </Link>
     <Link className="item">
