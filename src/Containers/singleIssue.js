@@ -4,7 +4,7 @@ import IssueNav from '../Components/issueNavBar'
 import AllAssignments from './allAssignments'
 import { allIssues } from '../actions'
 import AddNewAssignment from '../Components/addNewAssignment'
-
+import logo from '../hardware.jpg'; // with import
 
 class SingleIssue extends Component{
 
@@ -50,28 +50,63 @@ class SingleIssue extends Component{
         this.setState({add: !this.state.add})
     }
 
+
+    cancelTicketHandler = () => {
+            fetch(`http://localhost:3000/api/v1/issues/${this.props.issue.id}`,{
+                method: 'DELETE',
+                headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+            .then(data => {
+                this.updateAllIssues(data)
+            })
+    }
+
+
+
+    updateAllIssues = (data) => {
+        let newIssuesList = this.props.issues.filter(issue => issue.id !== data.id)
+        console.log('logging from inside updata all issues', newIssuesList)
+        this.props.backButtonHandler()
+    }
+
    
 
     render(){
         console.log('myass render', this.props)
         return(
-            <div className='IssuesContainer'>
+            <div className ='IssueContainer'>
                 <IssueNav 
                     addNewHandler={this.addNewHandler}
-                    backButtonHandler={this.props.backButtonHandler}/>
+                    backButtonHandler={this.props.backButtonHandler}
+                    cancelTicketHandler={this.cancelTicketHandler}        
+                />
+
+            <div className='SingleIssueContainer'>
                 <div className='Title'>
-                    <h1>{this.props.issue.title}</h1>
+                    <img src={logo} className="hardware logo" />
+                    <div className= 'title'>
+                    <h3>{this.props.issue.title}</h3>
                 </div>
+                <br/>
+                     <div className='Category'>
+                         <h3>Category: {this.props.issue.category} </h3>
+                     </div>
+                     <br/>
+                 <div className="Description">
+                        <h3>Description : {this.props.issue.description} </h3>
+                    </div>
+               </div>
+                <div className='single issue'>
                 <hr></hr>
-                <div className="Description">
-                    <h2>Description <br/>{this.props.issue.description} </h2>
-                </div>
-                <hr></hr>
-                <h2>Category: {this.props.issue.category} </h2>
                 <h3> History </h3>
                 {this.renderAssignments()}
                 {this.state.add ? <AddNewAssignment addNewHandler={this.addNewHandler} /> : null}
+            </div>
     </div>
+    </div>
+  
   
 
         )

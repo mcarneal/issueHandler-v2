@@ -12,6 +12,9 @@ const NavBar = (props) => {
           <Link to="/login" onClick={props.logoutHandler} className="item" id='logout'>
           LogOut
           </Link>
+          <button className="item" onClick={props.menuClickHandler}>
+              Add New
+          </button>
         </div>
       </div>
 

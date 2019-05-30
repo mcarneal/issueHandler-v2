@@ -28,10 +28,12 @@ class IssuesContainer extends Component{
             <div className='IssuesContainer'>
                  <Table celled inverted selectable>
                     <Table.Header>
-                        <Table.Row>
+                        <Table.Row className='table rows'>
                             <Table.HeaderCell>Title</Table.HeaderCell>
                             <Table.HeaderCell>Description</Table.HeaderCell>
-                            <Table.HeaderCell>Status</Table.HeaderCell>
+                            <Table.HeaderCell>Category</Table.HeaderCell>
+                            <Table.HeaderCell>Number of assignments</Table.HeaderCell>
+                            <Table.HeaderCell>Percent to completion</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                    {this.renderIssues()}

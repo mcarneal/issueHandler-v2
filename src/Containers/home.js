@@ -6,13 +6,14 @@ import MyAssignments from './myAssignments'
 import { selectedIssue } from '../actions'
 import SingleIssue from './singleIssue'
 import NavBar from '../Components/navbar'
-
+import NewIssue from './newIssue'
 
 
 class Home extends React.Component {
 
     state = {
-        showAll : true
+        showAll : true,
+        newIssue : false
     }
 
 
@@ -21,17 +22,15 @@ class Home extends React.Component {
             if (this.state.showAll){
                 return (
                     <div>
-                        <NavBar />
                         <div className ='home'>
                             <MyAssignments clickHandler={this.clickHandler} />
                             <IssuesContainer clickHandler={this.clickHandler} />
                         </div>
                     </div>
                 )             
-            } else if (!this.state.showAll){
+            } else if (!this.state.showAll && !this.state.newIssue){
                 return(
                     <div>
-                        <NavBar />
                             <div className ='home'>
                                 <MyAssignments clickHandler={this.clickHandler} />
                                 <SingleIssue backButtonHandler={this.backButtonHandler}
@@ -41,15 +40,33 @@ class Home extends React.Component {
                 )             
                
             }
-        } else {
+         else if (this.state.newIssue) {
+            return (
+                <div>
+                    <div className="home">
+                        <MyAssignments clickHandler={this.clickHandler} />
+                        <NewIssue submitViewHandler={this.clickHandler} />
+                    </div>
+            </div>
+            )
+        }
+        
+        }else {
             return <h1>Loading</h1>
         }
+    }
+
+    menuClickHandler = () => {
+        console.log("im clicking from the menu", this.state.newIssue)
+        this.setState ({newIssue : true})
+        this.setState ({showAll : false})
     }
 
 
     clickHandler = (props) => {
         this.props.selectedIssue(props)
         this.setState({showAll : false})
+        this.setState({newIssue : false})
     }
 
     backButtonHandler = () =>{
@@ -58,10 +75,13 @@ class Home extends React.Component {
 
 
 
+
     
     render(){
         return(
             <div>
+                <NavBar menuClickHandler={this.menuClickHandler}/>
+
                 {this.renderContent()}
             </div>
         )

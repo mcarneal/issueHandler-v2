@@ -18,7 +18,9 @@ class IssueCard extends Component{
                 <Table.Row onClick={ ()=>this.props.clickHandler(this.props)}>
                     <Table.Cell>{this.props.title}</Table.Cell>
                     <Table.Cell>{this.props.description}</Table.Cell>
-                    <Table.Cell textAlign='right'>{status} %</Table.Cell>
+                    <Table.Cell>{this.props.category}</Table.Cell>
+                    <Table.Cell>{this.props.assignments.length}</Table.Cell>
+                    <Table.Cell textAlign='right'>{Math.round(status * 100) / 100} %</Table.Cell>
                 </Table.Row>
             </Table.Body>
         

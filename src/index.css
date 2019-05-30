@@ -29,12 +29,90 @@ code {
     margin-top : 11vh;
     float: left;
     width: 25%;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .IssuesContainer {
     margin-top : 9vh;
     float: left;
     width : 75%;
-    overflow: scroll;
+    overflow: auto;
+}
+
+.NewContainer {
+    margin-top : 9vh;
+    float: left;
+    width : 75%;
+    overflow: auto;
+}
+
+.table.rows{
+    width : 75% !important;
+}
+.IssueContainer{
+    height : 100%;
+    margin-top : 9vh;
+    float: left;
+    width : 75%;
+}
+
+.ui.menu{
+    margin-bottom : 0px !important;
+    padding-bottom: 1px !important;
+}
+
+.SingleIssueContainer{
+    border : 0%;
+    background-color : rgb(49,62,77);
+   height : 100vh; 
+    float: left;
+    width : 100%;
+    overflow-y : scroll;
+}
+.single.issue{
+    height : 58vh;
+    border-radius: 1%;
+    background-color: rgb(233, 235, 238);
+    margin-right : 4%;
+    margin-left : 4%;
+    margin-top : 2%;
+    margin-bottom : 3%;
+    overflow-y : scroll;
+}
+
+
+.Title{
+    padding-top : 1%;
+    margin-top : 2vh;
+    margin-right : 4%;
+    margin-left : 4%;
+    background-color : rgb(245, 246, 247);
+    position : relative;
+    height : 18vh;
+}
+
+.title{
+    position : absolute;
+    margin-left : 25vh;
+    float : left;
+}
+
+.Category{
+    position : absolute;
+    margin-left : 25vh;
+    float : left;
+}
+
+.Description{
+    position : absolute;
+    margin-left : 25vh;
+    float : left;
+}
+
+.hardware.logo{
+    float : left;
+    margin-right: 3vh;
+    margin-left: 10vh;
+    height: 100px;
+    width: 100px;
 }
