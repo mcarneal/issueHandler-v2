@@ -85,6 +85,7 @@ class SingleIssue extends Component{
 
             <div className='SingleIssueContainer'>
                 <div className='Title'>
+
                     <img src={logo} className="hardware logo" />
                     <div className= 'title'>
                     <h3>{this.props.issue.title}</h3>
@@ -99,12 +100,11 @@ class SingleIssue extends Component{
                     </div>
                </div>
                 <div className='single issue'>
-                <hr></hr>
+                {this.state.add ? <AddNewAssignment addNewHandler={this.addNewHandler} /> : null}
                 <h3> History </h3>
                 {this.renderAssignments()}
-                {this.state.add ? <AddNewAssignment addNewHandler={this.addNewHandler} /> : null}
             </div>
-    </div>
+        </div>
     </div>
   
   

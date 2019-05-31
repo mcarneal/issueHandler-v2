@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { selectedIssue } from '../actions'
+import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
 
 class AddNewAssignment extends Component{
 
@@ -33,7 +34,7 @@ class AddNewAssignment extends Component{
     }).then(res => res.json())
             .then(data => {
                 this.updateIssue(data)
-                this.props.addNewHandler()
+                this.props.addNewHandler()                
             })
     }
 
@@ -47,13 +48,37 @@ class AddNewAssignment extends Component{
 
     render(){
         return(
-            <div>
-                <form>
-                    <input type='text' name='title' value={this.state.title} onChange={this.onChangeHandler} />
-                    <input type='text' name='description' value ={this.state.description} onChange={this.onChangeHandler}/>
-            </form>
-                    <button onClick={(e)=> this.onAddSubmit(e)}>submit</button>
+            <div className='New Assignment Form'>
+                <br/><br/>
+                <Form>
+                        <Form.Field
+                            id='form-input-control-issue-title'
+                            control={Input}
+                            label='Issue Title'
+                            placeholder='Title'
+                            name='title'
+                           
+                            onChange={this.onChangeHandler}
+                            />
 
+                    <Form.Field
+                        id='form-textarea-control-description'
+                        control={TextArea}
+                        label='Description'
+                        placeholder='Description'
+                        name='description'
+                        value={this.state.description}
+                        onChange={this.onChangeHandler}
+                        />
+                    <Form.Field
+                        onClick={this.onAddSubmit}
+                        id='form-button-control-public'
+                        control={Button}
+                        content='Confirm'
+                        label='Create New Issue'
+                         />
+                        </Form>
+                        <br/>
             </div>
 
 

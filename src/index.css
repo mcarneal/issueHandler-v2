@@ -70,7 +70,7 @@ code {
     overflow-y : scroll;
 }
 .single.issue{
-    height : 58vh;
+    height : 60vh;
     border-radius: 1%;
     background-color: rgb(233, 235, 238);
     margin-right : 4%;
@@ -116,3 +116,77 @@ code {
     height: 100px;
     width: 100px;
 }
+
+.New.Assignment.Form{
+    background-color : rgb(180, 215, 255);
+    border: 2px solid #4367B2;
+    padding : 25px;
+    display : block;
+    width : 90%;
+    margin-top : 3vh;
+    margin-right : auto;
+    margin-left : auto;
+    border-radius : 2%;
+}
+
+.AssignmentCard{
+    display: flex;
+    clear: both;
+    background-color : rgb(255, 255, 255);
+    border: 2px solid #ccc;
+    padding : 10px;
+    display : block;
+    width : 90%;
+    flex-direction: column;
+    min-height: 5vh;
+    margin-top : 3vh;
+    margin-right : auto;
+    margin-left : auto;
+    border-radius : 2%;
+    overflow : auto;
+}
+
+.Assignment.Details{
+    text-align: left;
+    position: relative;
+    float: left;
+    width: 75%;
+}
+
+.Assignment.Status{
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+#form-input-control-issue-title{
+     width: 100%;
+}
+
+.AssignmentIncomplete{
+    color : white;
+    border-radius : 5px;
+    padding : 7px;
+    position : relative;
+    background-color : rgb(219,39,39);
+}
+
+.AssignmentComplete{
+    color : white;
+    border-radius : 5px;
+    padding : 7px;
+    position : relative;
+    background-color : rgb(76,175,80);
+}
+
+.ChangeStatus{
+    width : 100%;
+    color : white;
+    border-radius : 5px;
+    padding : 7px;
+    position : relative;
+    background-color : rgb(6,93,131);
+}
+
+
+
