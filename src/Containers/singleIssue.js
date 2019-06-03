@@ -33,12 +33,14 @@ class SingleIssue extends Component{
 
     updateIssue = (data) => {
         let issue = this.props.issues.find(issue => issue.id === data.issue_id)
+        debugger
         let filteredAssignments = issue.assignments.filter(assignment => assignment.id !== data.id)
         let updatedAssignments = [...filteredAssignments, data]
         issue.assignments = updatedAssignments 
         let filteredIssueArray = this.props.issues.filter(issueObj => issueObj.id !== issue.id)
         let updatedIssueArray = [...filteredIssueArray, issue]
         console.log("updated issue array", updatedIssueArray, "old issue array", this.props.issues)
+        debugger
         this.props.allIssues(updatedIssueArray)
     }
 

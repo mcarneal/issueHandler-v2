@@ -17,14 +17,8 @@ class AllAssignments extends Component{
         this.props.changeStatusHandler(this.props.id , !completed)
     }
 
-    findAssignmentEmployee = () => {
-       return this.props.issue.employees.find(employee => employee.id === this.props.employee_id)
-    }
+   
 
-    componentDidUpdate(prevProps){
-        console.log('prevProps', prevProps)
-        console.log('current', this.props)
-    }
 
     renderStatus = () => {
         if(this.state.completed){
@@ -41,22 +35,29 @@ class AllAssignments extends Component{
             )
         }
     }
+
+    findEmployee = () => {
+        if(this.props.employees.length > 0){
+            let employee = this.props.employees.find(employeeObj => employeeObj.id === this.props.employee_id)
+            return employee.name
+
+        }
+    }
     
     render(){
-        const employee = this.findAssignmentEmployee() 
+        console.log('inside all assignments render', this.props)
         return(
             <div className= "AssignmentCard">
                 <div className='Assignment Details'>
                 <h4>{this.props.title}</h4>
                 <h4>Description : {this.props.description}</h4>
-                {this.props.employee_id ? <h4>Assigned to:{employee.name}</h4> : <h4>Assigned to:{this.props.employee_name}</h4>}
+                <h4>Assigned to : {this.findEmployee()}</h4>
             </div>
             <div className='Assignment Status'>
                 {this.renderStatus()} 
                 <button className="ChangeStatus" onClick={this.changeHandler}>Change Status</button>
                 <br></br>
-        </div>
-
+            </div>
     </div>
         )
     }

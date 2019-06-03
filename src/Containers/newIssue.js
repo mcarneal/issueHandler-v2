@@ -39,7 +39,7 @@ class NewContainer extends Component{
       })
         }).then(res => res.json())
             .then(data => {
-                this.props.submitViewHandler(data)
+                this.props.newIssueHandler(data)
             })
     }
 
@@ -51,6 +51,7 @@ class NewContainer extends Component{
         ]
 
         return(
+            <div className='IssuesContainer'>
             <div className='NewContainer'>
                   <Form>
                     <Form.Group widths='equal'>
@@ -92,7 +93,8 @@ class NewContainer extends Component{
                         label='Create New Issue'
                          />
                     </Form>
-            </div>
+                </div>
+        </div>
         )
     }
 }

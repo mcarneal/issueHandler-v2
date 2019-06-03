@@ -26,6 +26,20 @@ export const selectedIssue = (issue) => {
     }
 }
 
+export const findAllEmployees = (employees) => {
+    return{
+        type: 'ALLEMPLOYEES',
+        payload: employees
+    }
+}
+
+export const storeMyAssignments = (assignment) => {
+    return {
+        type : 'MYASSIGNMENTS',
+        payload : assignment 
+    }
+}
+
 export const autoLogin = (props) => {
     return dispatch => {
         fetch('http://localhost:3000/api/v1/get_employee',{

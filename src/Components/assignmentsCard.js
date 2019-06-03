@@ -7,7 +7,6 @@ class AssignmentCard extends Component {
 
 
     assignmentClickHandler = () => {
-        console.log('clicking iiii', this.props.issue_id)
         let issue = this.props.issues.find(issue => issue.id === this.props.issue_id)
         console.log(issue)
         this.props.clickHandler(issue)

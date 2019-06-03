@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { selectedIssue } from '../actions'
+import { allIssues } from '../actions'
+import { storeMyAssignments } from '../actions'
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
 
 class AddNewAssignment extends Component{
@@ -34,16 +36,24 @@ class AddNewAssignment extends Component{
     }).then(res => res.json())
             .then(data => {
                 this.updateIssue(data)
+                this.updateAssignments(data)
                 this.props.addNewHandler()                
             })
     }
 
     updateIssue = (data) => {
-        console.log('inside update issue', data)
         let updatedIssue = this.props.issue
         updatedIssue.assignments.push(data)
+        let filteredIssues = this.props.issues.filter(issue => issue.id !== updatedIssue.id)
+        let updatedIssues = [...filteredIssues, updatedIssue]
+        this.props.allIssues(updatedIssues)
         this.props.selectedIssue(updatedIssue)
         
+    }
+
+    updateAssignments = (data) => {
+        let newAssignmentsArray = [...this.props.myAssignments, data]
+        this.props.storeMyAssignments(newAssignmentsArray)
     }
 
     render(){
@@ -77,6 +87,12 @@ class AddNewAssignment extends Component{
                         content='Confirm'
                         label='Create New Issue'
                          />
+                    <Form.Field
+                        onClick={this.props.addNewHandler}
+                        id='form-button-control-public'
+                        control={Button}
+                        content='Cancel'
+                    />
                         </Form>
                         <br/>
             </div>
@@ -91,5 +107,5 @@ const mapStateToProps = (state) =>{
     return state 
 }
 
-export default connect(mapStateToProps, { selectedIssue })(AddNewAssignment)
+export default connect(mapStateToProps, { selectedIssue, allIssues, storeMyAssignments })(AddNewAssignment)
 

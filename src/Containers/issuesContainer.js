@@ -26,7 +26,7 @@ class IssuesContainer extends Component{
     render(){
         return(
             <div className='IssuesContainer'>
-                 <Table celled inverted selectable>
+                 <Table celled selectable>
                     <Table.Header>
                         <Table.Row className='table rows'>
                             <Table.HeaderCell>Title</Table.HeaderCell>

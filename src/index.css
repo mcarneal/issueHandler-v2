@@ -19,21 +19,59 @@ code {
     margin-bottom : 0px !important;
 }
 .home{
-    display: flex;
+    display : flex;
     clear: both;
     height: 100vh;
     overflow-y: hidden;
 }
 
+.ui.card {
+    width : 100% !important;
+
+}
+
+
 .My.Assignments.Container{
-    margin-top : 11vh;
+    padding : 15px;
+    background-color : rgb(49,62,77);
+    margin-top : 35vh;
     float: left;
     width: 25%;
     overflow: auto;
 }
+.test{
+
+    position : absolute;
+    width : 75%;
+    margin-left : 25vw;
+    height : 25vh;
+    background-color : rgb(49,62,77);
+    margin-top: 8vh;
+    float: left;
+}
+
+.employee.card{
+    position : relative;
+    background-color: rgb(233, 235, 238);
+    height : 24vh;
+}
+.test2{
+    padding-right : 25px;
+    background-color : rgb(49,62,77);
+    position : absolute;
+    width : 25%;
+    margin-top: 8vh; 
+    float: left;
+    height : 35vh;
+}
+.profile.card{
+    height : 24vh;
+    background-color : rgb(233, 235, 238)
+}
 
 .IssuesContainer {
-    margin-top : 9vh;
+    background-color : rgb(49,62,77);
+    margin-top : 33vh;
     float: left;
     width : 75%;
     overflow: auto;
@@ -50,19 +88,22 @@ code {
     width : 75% !important;
 }
 .IssueContainer{
+    background-color : rgb(49,62,77);
     height : 100%;
-    margin-top : 9vh;
+    margin-top : 8.5vh;
     float: left;
     width : 75%;
 }
 
 .ui.menu{
+    border-radius : 0px !important;
+    margin-right : 10px !important;
+    postion : fixed !important;
     margin-bottom : 0px !important;
     padding-bottom: 1px !important;
 }
 
 .SingleIssueContainer{
-    border : 0%;
     background-color : rgb(49,62,77);
    height : 100vh; 
     float: left;
@@ -70,25 +111,31 @@ code {
     overflow-y : scroll;
 }
 .single.issue{
-    height : 60vh;
+    height : 65vh;
     border-radius: 1%;
     background-color: rgb(233, 235, 238);
-    margin-right : 4%;
-    margin-left : 4%;
     margin-top : 2%;
     margin-bottom : 3%;
     overflow-y : scroll;
 }
 
+.NewContainer{
+    padding : 75px;
+    width :100%;
+    height : 65vh;
+    border-radius: 1%;
+    background-color: rgb(233, 235, 238);
+    margin-top : 2%;
+    margin-bottom : 3%;
+    overflow-y : scroll;
+
+}
 
 .Title{
     padding-top : 1%;
-    margin-top : 2vh;
-    margin-right : 4%;
-    margin-left : 4%;
     background-color : rgb(245, 246, 247);
     position : relative;
-    height : 18vh;
+    height : 17vh;
 }
 
 .title{
@@ -113,6 +160,12 @@ code {
     float : left;
     margin-right: 3vh;
     margin-left: 10vh;
+    height: 100px;
+    width: 100px;
+}
+
+.profile.pic{
+    margin-top: 4vh;
     height: 100px;
     width: 100px;
 }
@@ -186,6 +239,34 @@ code {
     padding : 7px;
     position : relative;
     background-color : rgb(6,93,131);
+}
+
+.employee.card.logo{
+    width : 25%;
+    float :right;
+    margin-left : 1vw;
+    margin-bottom : 10px;
+}
+
+.employee.card{
+    display : flex;
+    clear: both;
+    overflow-y: hidden;
+    padding : 15px;
+}
+
+.card.logo{
+    height : 20vh;
+    width : 14vw;
+    margin-bottom : 4%;
+}
+
+.welcome.banner{
+    border: 2px solid #ccc;
+    position : relative;
+    background-color : white;
+    float : right;
+    width : 75%;
 }
 
 
