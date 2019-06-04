@@ -9,7 +9,9 @@ class AddNewAssignment extends Component{
 
     state = {
         title : '',
-        description : ''
+        description : '',
+        Employee : '',
+        EmployeeId : null 
     }
 
     onChangeHandler = (e) => {
@@ -19,6 +21,7 @@ class AddNewAssignment extends Component{
     }
 
     onAddSubmit = (e) => {
+        console.log(this.state)
      
     fetch('http://localhost:3000/api/v1/assignments',{
       method: 'POST',
@@ -30,14 +33,18 @@ class AddNewAssignment extends Component{
           title: this.state.title,
           description: this.state.description,
             issue_id: this.props.issue.id,
-            employee_id: this.props.user.id
+            employee_id: this.state.EmployeeId
         }
       })
     }).then(res => res.json())
             .then(data => {
+                if (data.error){
+                    alert("Invalid Entry")
+                } else {
                 this.updateIssue(data)
                 this.updateAssignments(data)
                 this.props.addNewHandler()                
+                }
             })
     }
 
@@ -56,7 +63,24 @@ class AddNewAssignment extends Component{
         this.props.storeMyAssignments(newAssignmentsArray)
     }
 
+    listEmployees = () => {
+        let employeeList = []
+        this.props.employees.map((employee) =>{
+            let obj = {text : employee.name , value : employee.name, id : employee.id}
+            employeeList.push(obj)
+        })
+        console.log('logs of employee', employeeList)
+        return employeeList
+    }
+
+
+    categoryChangeHandler = (e) => {
+        console.log('eeeeeee', e.target.id)
+        this.setState({EmployeeId : parseInt(e.target.id)})
+    }
+
     render(){
+        let options = this.listEmployees()
         return(
             <div className='New Assignment Form'>
                 <br/><br/>
@@ -80,6 +104,16 @@ class AddNewAssignment extends Component{
                         value={this.state.description}
                         onChange={this.onChangeHandler}
                         />
+                        <Form.Field
+                            control={Select}
+                            options={options}
+                            label={{ children: 'Employees', htmlFor: 'form-select-control-category' }}
+                            placeholder='Assign Employee'
+                            search
+                            searchInput={{ id: 'form-select-control-employees' }}
+                            name='employees' 
+                            onChange={this.categoryChangeHandler}
+                            />
                     <Form.Field
                         onClick={this.onAddSubmit}
                         id='form-button-control-public'

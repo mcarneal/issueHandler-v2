@@ -21,7 +21,8 @@ class Home extends React.Component {
     state = {
         showAll : true,
         newIssue : false,
-        updated : false 
+        updated : false,
+        selectedIssue : {}
     }
 
 
@@ -45,7 +46,9 @@ class Home extends React.Component {
                     <div className ='home'>
                         <ProfileCard />
                         <MyAssignments clickHandler={this.clickHandler} />
-                        <SingleIssue backButtonHandler={this.backButtonHandler}
+                        <SingleIssue 
+                                     
+                            backButtonHandler={this.backButtonHandler}
                                      changeStatusHandler={this.changeStatusHandler}/>
                         </div>
                        
@@ -58,7 +61,9 @@ class Home extends React.Component {
                         <ProfileCard />
                         <MyAssignments clickHandler={this.clickHandler} />
                         <EmployeeCard />
-                        <NewIssue newIssueHandler={this.newIssueHandler} />
+                        <NewIssue newIssueHandler={this.newIssueHandler} 
+                                    newIssueBackButtonHandler={this.newIssueBackButtonHandler}            
+                        />
                </div>
             )
         }
@@ -70,16 +75,22 @@ class Home extends React.Component {
     }
 
     menuClickHandler = () => {
-        console.log("im clicking from the menu", this.state.newIssue)
         this.setState ({newIssue : true})
         this.setState ({showAll : false})
+    }
+
+        newIssueBackButtonHandler = () => {
+            this.setState({showAll : true})
+        this.setState({newIssue : false})
     }
 
 
     clickHandler = (props) => {
         this.props.selectedIssue(props)
+        this.setState({selectedIssue : props})
         this.setState({showAll : false})
         this.setState({newIssue : false})
+        debugger
     }
 
     newIssueHandler = (props) => {
@@ -94,12 +105,27 @@ class Home extends React.Component {
         this.setState({showAll : true})
     }
 
-    
+    logOutHandler = () => {
+        localStorage.removeItem('token')
+        this.props.history.push('/')
+    }
+
+    homeButtonHandler = () => {
+    this.setState({
+        showAll : true,
+        newIssue : false,
+        updated : false,
+        selectedIssue : {}
+    })
+    }
+
     render(){
         return(
             <div>
-                <NavBar menuClickHandler={this.menuClickHandler}/>
-
+                <NavBar menuClickHandler={this.menuClickHandler}
+                        logoutHandler={this.logOutHandler}
+                    homeButtonHandler={this.homeButtonHandler}
+                />
                 {this.renderContent()}
             </div>
         )

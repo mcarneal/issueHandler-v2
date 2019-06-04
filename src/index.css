@@ -11,6 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.App{
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+}
 .ui.segment, .ui.primary.segment{
     position : fixed !important;
     z-index : 4;
@@ -39,8 +46,7 @@ code {
     width: 25%;
     overflow: auto;
 }
-.test{
-
+.employee.container{
     position : absolute;
     width : 75%;
     margin-left : 25vw;
@@ -55,7 +61,7 @@ code {
     background-color: rgb(233, 235, 238);
     height : 24vh;
 }
-.test2{
+.profile.container{
     padding-right : 25px;
     background-color : rgb(49,62,77);
     position : absolute;
@@ -70,6 +76,7 @@ code {
 }
 
 .IssuesContainer {
+    box-shadow: 10px 10px 5px grey;
     background-color : rgb(49,62,77);
     margin-top : 33vh;
     float: left;
@@ -131,6 +138,12 @@ code {
 
 }
 
+.new.form{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color : rgb(180, 215, 255);
+    padding : 35px;
+}
+
 .Title{
     padding-top : 1%;
     background-color : rgb(245, 246, 247);
@@ -170,9 +183,33 @@ code {
     width: 100px;
 }
 
+.login.container{
+    position : absolute;
+}
+
+.background{
+    position : fixed;
+    z-index : -1;
+    height : 100%;
+    width : 100%
+}
+
+.Login{
+  background-color: rgb(233, 235, 238);
+box-shadow: 10px 10px 5px grey;
+  border-radius : 8px;
+  padding : 75px;
+  position: fixed;
+  margin-top: 10em;
+  margin-left: 40%;
+  margin-right: 60%;
+  text-align: center;
+}
+
+
 .New.Assignment.Form{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color : rgb(180, 215, 255);
-    border: 2px solid #4367B2;
     padding : 25px;
     display : block;
     width : 90%;
@@ -183,10 +220,10 @@ code {
 }
 
 .AssignmentCard{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     clear: both;
     background-color : rgb(255, 255, 255);
-    border: 2px solid #ccc;
     padding : 10px;
     display : block;
     width : 90%;
@@ -195,7 +232,7 @@ code {
     margin-top : 3vh;
     margin-right : auto;
     margin-left : auto;
-    border-radius : 2%;
+    border-radius : 8px;
     overflow : auto;
 }
 
@@ -262,7 +299,8 @@ code {
 }
 
 .welcome.banner{
-    border: 2px solid #ccc;
+    border-radius : 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position : relative;
     background-color : white;
     float : right;

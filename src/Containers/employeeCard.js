@@ -6,7 +6,7 @@ class EmployeeCard extends Component{
 
     render(){
         return(
-                <div className='test'>
+                <div className='employee container'>
                     <div className='employee card'>
                         <div className='welcome banner'>
                             <div>
@@ -17,7 +17,7 @@ class EmployeeCard extends Component{
                                 <h4>There are currently:</h4>
                             </div>
                             <div>
-                                <h4>{this.props.issues.length} checked in.</h4>
+                                <h4>{this.props.issues.length} tickets checked in.</h4>
                         </div>
                     </div>
                         <div className='employee card logo'>

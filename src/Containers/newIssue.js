@@ -52,7 +52,8 @@ class NewContainer extends Component{
 
         return(
             <div className='IssuesContainer'>
-            <div className='NewContainer'>
+                <div className='NewContainer'>
+                    <div className='new form'>
                   <Form>
                     <Form.Group widths='equal'>
                         <Form.Field
@@ -91,8 +92,12 @@ class NewContainer extends Component{
                         control={Button}
                         content='Confirm'
                         label='Create New Issue'
-                         />
-                    </Form>
+                    />
+                            <Button onClick={this.props.newIssueBackButtonHandler}>
+                                Back
+                            </Button>
+                        </Form>
+                </div>
                 </div>
         </div>
         )

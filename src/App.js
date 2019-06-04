@@ -9,6 +9,9 @@ import Home from './Containers/home'
 import { autoLogin } from './actions'
 import { storeMyAssignments } from './actions'
 import { findAllEmployees } from './actions'
+import background from './background.jpg'; // with import
+
+
 class App extends Component {
 
 
@@ -49,8 +52,13 @@ class App extends Component {
     }
 
     render(){
+        const sectionStyle = {
+            width: "100%",
+            height: "100vh",
+            backgroundImage: `url(${background})`
+        };
         return( 
-            <div className= "App">
+            <div className= "App" style={ sectionStyle  }>
                 <Switch>
                     <Route exact path="/home" render={()=> <Home employee={this.props.user}/>}/>
                     <Route exact path="/" render={()=> <Login />} />

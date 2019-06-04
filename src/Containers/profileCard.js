@@ -18,15 +18,18 @@ class ProfileCard extends Component{
         let myAssignments = this.findMyAssignments()
         console.log(myAssignments)
         return(
-                <div className='test2'>
+                <div className='profile container'>
                     <div className='profile card'>
                         <img src={profile} className="profile pic" />
                     <div>
                         <h4>{this.props.user.username}</h4>
                     </div>
                     <div>
+                      <h4>{this.props.user.role}</h4>         
+                </div>
+                    <div>
                         <h4>
-                           You have {this.findMyAssignments()} assignments 
+                           You have {this.findMyAssignments()} assignments listed below: 
                             
                     </h4>
                     </div>

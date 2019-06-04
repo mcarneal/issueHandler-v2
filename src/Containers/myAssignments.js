@@ -21,7 +21,9 @@ class MyAssignments extends Component {
     renderMyAssignments = () => {
         if(this.props.myAssignments.length > 0){
             let myAssignmentsArray = this.findMyAssignment()
-            return myAssignmentsArray.map(assignment => <AssignmentCard clickHandler={this.props.clickHandler} key={assignment.id} {...assignment}/> )
+            let sortedArray = myAssignmentsArray.sort(function(a, b){return b.id - a.id})
+
+            return sortedArray.map(assignment => <AssignmentCard clickHandler={this.props.clickHandler} key={assignment.id} {...assignment}/> )
         }
     } 
 

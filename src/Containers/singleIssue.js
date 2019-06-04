@@ -5,12 +5,15 @@ import AllAssignments from './allAssignments'
 import { allIssues } from '../actions'
 import AddNewAssignment from '../Components/addNewAssignment'
 import logo from '../hardware.jpg'; // with import
+import { storeMyAssignments } from '../actions'
+import { withRouter } from 'react-router-dom'
 
 class SingleIssue extends Component{
 
     state = {
         statusChanged : false,
-        add : false
+        add : false,
+        issue : {}
     }
 
     changeStatusHandler = (id, completed) => {
@@ -32,20 +35,14 @@ class SingleIssue extends Component{
 
 
     updateIssue = (data) => {
-        let issue = this.props.issues.find(issue => issue.id === data.issue_id)
-        debugger
-        let filteredAssignments = issue.assignments.filter(assignment => assignment.id !== data.id)
-        let updatedAssignments = [...filteredAssignments, data]
-        issue.assignments = updatedAssignments 
-        let filteredIssueArray = this.props.issues.filter(issueObj => issueObj.id !== issue.id)
-        let updatedIssueArray = [...filteredIssueArray, issue]
-        console.log("updated issue array", updatedIssueArray, "old issue array", this.props.issues)
-        debugger
-        this.props.allIssues(updatedIssueArray)
+        let filteredAssignments = [...this.props.myAssignments.filter(assignment => assignment.id !== data.id), data]
+       this.props.storeMyAssignments(filteredAssignments) 
     }
 
     renderAssignments = () => {
-        return this.props.issue.assignments.map(assignment => <AllAssignments changeStatusHandler={this.changeStatusHandler} {...assignment}/> )
+    let sortedArray = this.props.myAssignments.sort(function(a, b){return b.id - a.id})
+
+        return sortedArray.map(assignment => assignment.issue_id === this.props.issue.id ? <AllAssignments changeStatusHandler={this.changeStatusHandler} {...assignment}/> : null )
     }
 
     addNewHandler = () => {
@@ -62,6 +59,7 @@ class SingleIssue extends Component{
         }).then(res => res.json())
             .then(data => {
                 this.updateAllIssues(data)
+                this.props.history.push('/home')
             })
     }
 
@@ -69,10 +67,14 @@ class SingleIssue extends Component{
 
     updateAllIssues = (data) => {
         let newIssuesList = this.props.issues.filter(issue => issue.id !== data.id)
-        console.log('logging from inside updata all issues', newIssuesList)
+        let updatedAssignments = this.props.myAssignments.filter(assignment => assignment.issue_id !== data.id)
+        this.props.storeMyAssignments(updatedAssignments)
         this.props.backButtonHandler()
     }
 
+    componentDidMount(){
+        this.setState({issue : this.props.selectedIssue})
+    }
    
 
     render(){
@@ -104,7 +106,7 @@ class SingleIssue extends Component{
                 <div className='single issue'>
                 {this.state.add ? <AddNewAssignment addNewHandler={this.addNewHandler} /> : null}
                 <h3> History </h3>
-                {this.renderAssignments()}
+                {this.props.issue.assignments.length > 0 ? this.renderAssignments() : <h4>There are currently no assignments for this ticket</h4>}
             </div>
         </div>
     </div>
@@ -118,4 +120,4 @@ class SingleIssue extends Component{
 const mapStateToProps = (state) =>{
     return state
 }
-export default connect(mapStateToProps, { allIssues })(SingleIssue)
+export default withRouter(connect(mapStateToProps, { allIssues, storeMyAssignments })(SingleIssue))
