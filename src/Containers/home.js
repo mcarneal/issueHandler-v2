@@ -62,7 +62,7 @@ class Home extends React.Component {
                         <MyAssignments clickHandler={this.clickHandler} />
                         <EmployeeCard />
                         <NewIssue newIssueHandler={this.newIssueHandler} 
-                                    newIssueBackButtonHandler={this.newIssueBackButtonHandler}            
+                                  newIssueBackButtonHandler={this.newIssueBackButtonHandler}            
                         />
                </div>
             )
@@ -81,7 +81,7 @@ class Home extends React.Component {
 
         newIssueBackButtonHandler = () => {
             this.setState({showAll : true})
-        this.setState({newIssue : false})
+            this.setState({newIssue : false})
     }
 
 
@@ -111,12 +111,12 @@ class Home extends React.Component {
     }
 
     homeButtonHandler = () => {
-    this.setState({
-        showAll : true,
-        newIssue : false,
-        updated : false,
-        selectedIssue : {}
-    })
+        this.setState({
+            showAll : true,
+            newIssue : false,
+            updated : false,
+            selectedIssue : {}
+        })
     }
 
     render(){

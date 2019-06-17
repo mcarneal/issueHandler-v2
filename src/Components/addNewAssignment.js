@@ -11,7 +11,8 @@ class AddNewAssignment extends Component{
         title : '',
         description : '',
         Employee : '',
-        EmployeeId : null 
+        EmployeeId : null,
+        employeeList : []
     }
 
     onChangeHandler = (e) => {
@@ -68,15 +69,19 @@ class AddNewAssignment extends Component{
         this.props.employees.map((employee) =>{
             let obj = {text : employee.name , value : employee.name, id : employee.id}
             employeeList.push(obj)
+            return <option value='tests'>{employee.name}</option>
         })
-        console.log('logs of employee', employeeList)
-        return employeeList
+    }
+
+    listEmployees = () => {
+        return this.props.employees.map(employee => <option value={employee.id}>{employee.name}</option>)
     }
 
 
+
     categoryChangeHandler = (e) => {
-        console.log('eeeeeee', e.target.id)
-        this.setState({EmployeeId : parseInt(e.target.id)})
+        console.log(e.target.value)
+        this.setState({EmployeeId : parseInt(e.target.value)})
     }
 
     render(){
@@ -103,17 +108,13 @@ class AddNewAssignment extends Component{
                         name='description'
                         value={this.state.description}
                         onChange={this.onChangeHandler}
-                        />
-                        <Form.Field
-                            control={Select}
-                            options={options}
-                            label={{ children: 'Employees', htmlFor: 'form-select-control-category' }}
-                            placeholder='Assign Employee'
-                            search
-                            searchInput={{ id: 'form-select-control-employees' }}
-                            name='employees' 
-                            onChange={this.categoryChangeHandler}
-                            />
+                    />
+                            <select name='employees' className='employees dropdown'
+                                    onChange={this.categoryChangeHandler}>
+                            <option value="" disabled selected>Assign to ...</option>
+                              {this.listEmployees()}
+                        </select>
+                       
                     <Form.Field
                         onClick={this.onAddSubmit}
                         id='form-button-control-public'

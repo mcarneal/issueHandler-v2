@@ -307,5 +307,8 @@ box-shadow: 10px 10px 5px grey;
     width : 75%;
 }
 
-
+.employees.dropdown{
+    height : 4vh !important;
+    width : 20% !important;
+}
 
