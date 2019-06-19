@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { selectedIssue } from '../actions'
 import { allIssues } from '../actions'
 import { storeMyAssignments } from '../actions'
-import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button } from 'semantic-ui-react'
 
 class AddNewAssignment extends Component{
 
@@ -22,7 +22,6 @@ class AddNewAssignment extends Component{
     }
 
     onAddSubmit = (e) => {
-        console.log(this.state)
      
     fetch('http://localhost:3000/api/v1/assignments',{
       method: 'POST',
@@ -80,12 +79,10 @@ class AddNewAssignment extends Component{
 
 
     categoryChangeHandler = (e) => {
-        console.log(e.target.value)
         this.setState({EmployeeId : parseInt(e.target.value)})
     }
 
     render(){
-        let options = this.listEmployees()
         return(
             <div className='New Assignment Form'>
                 <br/><br/>

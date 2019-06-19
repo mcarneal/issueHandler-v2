@@ -21,7 +21,7 @@ class EmployeeCard extends Component{
                         </div>
                     </div>
                         <div className='employee card logo'>
-                        <img src={logo} className="card logo" />
+                        <img src={logo} alt='logo' className="card logo" />
                     </div>
                 </div>
             </div>

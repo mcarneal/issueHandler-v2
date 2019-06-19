@@ -15,12 +15,10 @@ class ProfileCard extends Component{
     } 
 
     render(){
-        let myAssignments = this.findMyAssignments()
-        console.log(myAssignments)
         return(
                 <div className='profile container'>
                     <div className='profile card'>
-                        <img src={profile} className="profile pic" />
+                        <img src={profile} alt='profile' className="profile pic" />
                     <div>
                         <h4>{this.props.user.username}</h4>
                     </div>

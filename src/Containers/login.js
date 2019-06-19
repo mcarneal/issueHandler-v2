@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { login } from '../actions'
 import { Button, Input } from 'semantic-ui-react'
-import background from '../background.jpg'; // with import
 import { findAllEmployees } from '../actions'
 
 class Login extends React.Component{
@@ -58,7 +57,6 @@ class Login extends React.Component{
            
     updateEmployeeList = (data) =>{
         let newEmployeeList = [...this.props.employees, data]
-        debugger
         this.props.findAllEmployees(newEmployeeList)
     } 
                  

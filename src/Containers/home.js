@@ -7,7 +7,6 @@ import { selectedIssue } from '../actions'
 import SingleIssue from './singleIssue'
 import NavBar from '../Components/navbar'
 import NewIssue from './newIssue'
-import profile from '../profile.png'; // with import
 import ProfileCard from './profileCard'
 import EmployeeCard from './employeeCard'
 import { allIssues } from '../actions' 
@@ -90,7 +89,6 @@ class Home extends React.Component {
         this.setState({selectedIssue : props})
         this.setState({showAll : false})
         this.setState({newIssue : false})
-        debugger
     }
 
     newIssueHandler = (props) => {

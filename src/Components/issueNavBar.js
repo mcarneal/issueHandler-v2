@@ -14,7 +14,7 @@ const IssueBar = (props) => {
       Add Assignment
     </Link>
     <Link className="item" onClick={props.cancelTicketHandler}>
-      Cancel Ticket
+      Close Ticket
     </Link>
   </div>
 

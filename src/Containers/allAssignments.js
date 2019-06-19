@@ -45,7 +45,6 @@ class AllAssignments extends Component{
     }
     
     render(){
-        console.log('inside all assignments render', this.props)
         return(
             <div className= "AssignmentCard">
                 <div className='Assignment Details'>

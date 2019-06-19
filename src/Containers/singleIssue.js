@@ -28,7 +28,6 @@ class SingleIssue extends Component{
         })
     .then(res => res.json())
             .then(data => {
-                console.log('inside fetch', data)
                 this.updateIssue(data)
             })
     }
@@ -66,7 +65,6 @@ class SingleIssue extends Component{
 
 
     updateAllIssues = (data) => {
-        let newIssuesList = this.props.issues.filter(issue => issue.id !== data.id)
         let updatedAssignments = this.props.myAssignments.filter(assignment => assignment.issue_id !== data.id)
         this.props.storeMyAssignments(updatedAssignments)
         this.props.backButtonHandler()
@@ -78,7 +76,6 @@ class SingleIssue extends Component{
    
 
     render(){
-        console.log('myass render', this.props)
         return(
             <div className ='IssueContainer'>
                 <IssueNav 
@@ -90,7 +87,7 @@ class SingleIssue extends Component{
             <div className='SingleIssueContainer'>
                 <div className='Title'>
 
-                    <img src={logo} className="hardware logo" />
+                    <img src={logo} alt='logo' className="hardware logo" />
                     <div className= 'title'>
                     <h3>{this.props.issue.title}</h3>
                 </div>

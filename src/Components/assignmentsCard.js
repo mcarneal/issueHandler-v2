@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class AssignmentCard extends Component {
@@ -8,7 +8,6 @@ class AssignmentCard extends Component {
 
     assignmentClickHandler = () => {
         let issue = this.props.issues.find(issue => issue.id === this.props.issue_id)
-        console.log(issue)
         this.props.clickHandler(issue)
     }
 
