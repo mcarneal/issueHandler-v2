@@ -5,5 +5,4 @@ if(process.env["NODE_ENV"]==="development"){
 } else if (process.env["NODE_ENV"]==='production') {
     API_URL = 'https://issuehandlrapi.herokuapp.com'
 }
-
 export default API_URL
