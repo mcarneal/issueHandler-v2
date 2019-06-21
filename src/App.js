@@ -9,7 +9,7 @@ import { autoLogin } from './actions'
 import { storeMyAssignments } from './actions'
 import { findAllEmployees } from './actions'
 import background from './background.jpg'; // with import
-
+import API_URL from './config.js'
 
 class App extends Component {
 
@@ -35,7 +35,7 @@ class App extends Component {
     }
 
     fetchAssignments = () => {
-        fetch('http://localhost:3000/api/v1/assignments')
+        fetch(`${API_URL}/api/v1/assignments`)
             .then(res => res.json())
             .then(data =>{
                 this.props.storeMyAssignments(data)
@@ -43,7 +43,7 @@ class App extends Component {
     }
 
     fetchEmployees = () => {
-        fetch('http://localhost:3000/api/v1/employees')
+        fetch(`${API_URL}/api/v1/employees`)
             .then(res => res.json())
             .then(data => {
                 this.props.findAllEmployees(data)

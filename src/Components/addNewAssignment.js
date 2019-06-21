@@ -4,6 +4,8 @@ import { selectedIssue } from '../actions'
 import { allIssues } from '../actions'
 import { storeMyAssignments } from '../actions'
 import { Form, Input, TextArea, Button } from 'semantic-ui-react'
+import API_URL from '../config.js'
+
 
 class AddNewAssignment extends Component{
 
@@ -23,7 +25,7 @@ class AddNewAssignment extends Component{
 
     onAddSubmit = (e) => {
      
-    fetch('http://localhost:3000/api/v1/assignments',{
+    fetch(`${API_URL}/api/v1/assignments`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

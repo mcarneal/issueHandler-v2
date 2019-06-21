@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { login } from '../actions'
 import { Button, Input } from 'semantic-ui-react'
 import { findAllEmployees } from '../actions'
-
+import API_URL from '../config.js'
 class Login extends React.Component{
 
 
@@ -25,7 +25,7 @@ class Login extends React.Component{
     }
     createUser = (e) => {
         e.preventDefault()
-    fetch('http://localhost:3000/api/v1/employees',{
+        fetch(`${API_URL}/api/v1/employees`,{
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -65,7 +65,7 @@ class Login extends React.Component{
                 
     loginClickHandler = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/api/v1/login',{
+        fetch(`${API_URL}/api/v1/login`,{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

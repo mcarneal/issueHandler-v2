@@ -1,3 +1,5 @@
+import API_URL from '../config.js'
+
 export const login = (user) => {
     return {
         type: 'LOGIN',
@@ -42,7 +44,7 @@ export const storeMyAssignments = (assignment) => {
 
 export const autoLogin = (props) => {
     return dispatch => {
-        fetch('http://localhost:3000/api/v1/get_employee',{
+        fetch(`${API_URL}/api/v1/get_employee`,{
             headers: {
                 'Authorization' : localStorage.getItem('token')
             }

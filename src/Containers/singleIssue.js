@@ -7,6 +7,7 @@ import AddNewAssignment from '../Components/addNewAssignment'
 import logo from '../hardware.jpg'; // with import
 import { storeMyAssignments } from '../actions'
 import { withRouter } from 'react-router-dom'
+import API_URL from '../config.js'
 
 class SingleIssue extends Component{
 
@@ -17,7 +18,7 @@ class SingleIssue extends Component{
     }
 
     changeStatusHandler = (id, completed) => {
-        fetch(`http://localhost:3000/api/v1/assignments/${id}`, {
+        fetch(`${API_URL}/api/v1/assignments/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -50,7 +51,7 @@ class SingleIssue extends Component{
 
 
     cancelTicketHandler = () => {
-            fetch(`http://localhost:3000/api/v1/issues/${this.props.issue.id}`,{
+            fetch(`${API_URL}/api/v1/issues/${this.props.issue.id}`,{
                 method: 'DELETE',
                 headers: {
                 "Content-Type": "application/json"

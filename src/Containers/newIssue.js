@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
 import { allIssues } from '../actions'
-
+import API_URL from '../config.js'
 
 
 class NewContainer extends Component{
@@ -24,8 +24,7 @@ class NewContainer extends Component{
     }
 
     submitNewIssue = () => {
-        console.log('from inside new issue', this.state)
-        fetch('http://localhost:3000/api/v1/issues',{
+        fetch(`${API_URL}/api/v1/issues`,{
             method: 'POST',
             headers: {
             "Content-Type": "application/json"

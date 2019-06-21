@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { allIssues } from '../actions' 
 import { Table } from 'semantic-ui-react'
 import IssueCard from '../Components/issueCard'
-
+import API_URL from '../config.js'
 class IssuesContainer extends Component{
 
 
     componentDidMount(){
-        fetch('http://localhost:3000/api/v1/issues')
+        fetch(`${API_URL}/api/v1/issues`)
             .then(res => res.json())
             .then(data =>{
                 this.props.allIssues(data)
