@@ -1,4 +1,13 @@
+##### IssueHandlr Frontend #####
+
+issue handlr is ticketing system for small IT professionals to track, manage, and assign tasks.
+
+The front end of this app was built with react and redux.
+
+run npm install after repo has been cloned.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
